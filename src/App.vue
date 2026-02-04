@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>HEllo Vue3</div>
+  <div>Hello Vue3</div>
 </template>
 
 <style scoped lang="scss"></style>
