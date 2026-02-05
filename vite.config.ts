@@ -14,17 +14,20 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       vueDevTools(),
+      // 全局svg组件注册
       createSvgIconsPlugin({
         iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
         // 生成的 symbolId 规则：icon-子目录-文件名
         symbolId: 'icon-[name]',
       }),
     ],
+    // 使用@来查找文件
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
+    // 全局css样式注册
     css: {
       preprocessorOptions: {
         scss: {

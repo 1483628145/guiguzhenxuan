@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>demo</div>
+  <div>login</div>
 </template>
 
 <style scoped lang="scss"></style>

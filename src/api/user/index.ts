@@ -13,7 +13,9 @@ enum API {
   LOGOUT_URL = '/admin/acl/index/logout',
 }
 
-//登录接口
+/**
+ * 登陆接口
+ * *** */
 export const reqLogin = (data: loginFormData) => {
   // 这个泛型第一个是结果第二个是data类型
   return request({

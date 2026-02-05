@@ -1,14 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
+//通过vue-router插件实现模板路由配置
+import { createRouter, createWebHashHistory } from 'vue-router'
+import { constantRoute } from '@/router/routers'
+//创建路由器
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    /* {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-    }, */
-  ],
+  //路由模式hash
+  history: createWebHashHistory(),
+  routes: constantRoute,
 })
-
 export default router
