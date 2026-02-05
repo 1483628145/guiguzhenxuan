@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import HelloDemo from '@/views/HelloDemo.vue'
 
-// 测试环境变量是否能拿到
-console.log(import.meta.env.VITE_SERVER);
 </script>
 
 <template>
@@ -11,6 +9,7 @@ console.log(import.meta.env.VITE_SERVER);
     全局按钮
   </el-button>
   <HelloDemo>1</HelloDemo>
+  <SvgIcon name="home" size="20" />
 </template>
 
 <style scoped lang="scss"></style>
