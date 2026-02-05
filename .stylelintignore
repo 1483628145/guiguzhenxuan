@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+public
+src/assets
+
+*.js
+*.ts
