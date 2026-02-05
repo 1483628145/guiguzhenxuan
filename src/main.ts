@@ -12,6 +12,9 @@ import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
+// 全局引入sass默认样式
+import '@/styles/index.scss'
+
 const app = createApp(App)
 
 app.use(createPinia())
