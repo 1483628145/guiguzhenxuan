@@ -14,6 +14,9 @@ export default [
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
+      globals: {
+        ...globals.browser, // ✅ 包含 console、window、document 等
+      },
     },
     rules: {
       // 你可以慢慢加规则，不要一开始就太严格
