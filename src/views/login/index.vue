@@ -1,8 +1,80 @@
 <script setup lang="ts">
+import { User, Lollipop } from '@element-plus/icons-vue'
+import { ref } from 'vue';
+import { reqLogin } from '@/api/user';
+
+
+const loginForm = ref({
+  username: 'admin',
+  password: '111111'
+})
+
+// 登陆按钮
+const loginHandle = async () => {
+  // 跳转登陆
+  let res = await reqLogin(loginForm.value)
+  // 成功跳转到首页
+  console.log(res);
+}
 </script>
 
 <template>
-  <div>login</div>
+  <div class="container">
+    <!-- layout布局 -->
+    <el-row>
+      <el-col :span="12"></el-col>
+      <el-col :span="12">
+        <!-- 表单 -->
+        <el-form class="loginForm">
+          <el-form-item>
+            <h1>Hello尚硅谷</h1>
+          </el-form-item>
+          <el-form-item>
+            <span>欢迎来到尚硅谷</span>
+          </el-form-item>
+          <el-form-item>
+            <el-input v-model="loginForm.username" placeholder="请输入账户名" :prefix-icon="User">
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-input v-model="loginForm.password" placeholder="请输入密码" :prefix-icon="Lollipop"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button class="loginBtn" type="primary" @click="loginHandle">登陆</el-button>
+            <el-button class="loginBtn" type="primary">重置表单</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.container {
+  background: url("../../assets/images/background.jpg") no-repeat;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+
+  .loginForm {
+    margin-top: 200px;
+    margin-left: 50px;
+    width: 500px;
+    padding: 30px;
+    background: url('../../assets/images/login_form.png');
+
+    h1 {
+      font-size: 40px;
+      color: white;
+    }
+
+    span {
+      font-size: 16px;
+    }
+
+    .loginBtn {
+      width: 100px;
+    }
+  }
+}
+</style>
