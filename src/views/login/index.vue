@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { User, Lollipop } from '@element-plus/icons-vue'
+import { User, Lock } from '@element-plus/icons-vue'
 import { ref } from 'vue';
-import { reqLogin } from '@/api/user';
+
+import { useUserStore } from '@/stores/modules/user/index';
 
 
 const loginForm = ref({
@@ -9,12 +10,15 @@ const loginForm = ref({
   password: '111111'
 })
 
+const userStore = useUserStore()
+
 // 登陆按钮
 const loginHandle = async () => {
-  // 跳转登陆
-  let res = await reqLogin(loginForm.value)
+  userStore.loginReq(loginForm.value)
+  // 使用pinia发请求
+  // let res = await reqLogin(loginForm.value)
   // 成功跳转到首页
-  console.log(res);
+  // console.log(res);
 }
 </script>
 
@@ -27,7 +31,7 @@ const loginHandle = async () => {
         <!-- 表单 -->
         <el-form class="loginForm">
           <el-form-item>
-            <h1>Hello尚硅谷</h1>
+            <h1>Hello</h1>
           </el-form-item>
           <el-form-item>
             <span>欢迎来到尚硅谷</span>
@@ -37,7 +41,7 @@ const loginHandle = async () => {
             </el-input>
           </el-form-item>
           <el-form-item>
-            <el-input v-model="loginForm.password" placeholder="请输入密码" :prefix-icon="Lollipop"></el-input>
+            <el-input v-model="loginForm.password" show-password placeholder="请输入密码" :prefix-icon="Lock"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button class="loginBtn" type="primary" @click="loginHandle">登陆</el-button>
