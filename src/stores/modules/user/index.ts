@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import type { loginFormData } from '@/api/user/type'
 import { reqLogin } from '@/api/user'
 import { getToken, setToken } from '@/utils/token'
+import { ElMessage } from 'element-plus'
 
 export const useUserStore = defineStore('counter', {
   // ① 状态（必须是函数）
@@ -21,6 +22,11 @@ export const useUserStore = defineStore('counter', {
       this.token = data
       // 本地存储token
       setToken(data)
+      // 提示登陆成功
+      ElMessage({
+        message: '登陆成功！',
+        type: 'success',
+      })
       // console.log(getToken())
     },
   },

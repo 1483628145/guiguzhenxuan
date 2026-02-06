@@ -26,8 +26,4 @@ app.use(ElementPlus)
 // 注册svg全局组件
 app.component('SvgIcon', SvgIcon)
 
-// 测试环境变量是否能拿到
-// 得到的是一个对象
-// console.log(import.meta.env)
-
 app.mount('#app')

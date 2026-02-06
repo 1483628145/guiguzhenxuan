@@ -44,7 +44,7 @@ export default defineConfig(({ mode }) => {
           target: env.VITE_SERVER,
           changeOrigin: true,
           rewrite: (path) =>
-            path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), ''),
+            path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), '/admin'),
         },
       },
     },
