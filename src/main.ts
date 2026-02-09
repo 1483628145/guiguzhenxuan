@@ -17,6 +17,7 @@ import '@/styles/index.scss'
 
 const app = createApp(App)
 
+// 创建pinia
 app.use(createPinia())
 app.use(router)
 

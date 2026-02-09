@@ -4,12 +4,13 @@ import { ref } from 'vue';
 
 import { useUserStore } from '@/stores/modules/user/index';
 
-
+// 登陆表单
 const loginForm = ref({
   username: 'admin',
-  password: '111111'
+  password: '1111112'
 })
 
+// user仓库
 const userStore = useUserStore()
 
 // 登陆按钮

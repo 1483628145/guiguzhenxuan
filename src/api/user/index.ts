@@ -2,7 +2,7 @@
 
 import request from '@/utils/request'
 
-import type { loginFormData } from '@/api/user/type'
+import type { loginFormData, LoginResponse } from '@/api/user/type'
 
 //项目用户相关的请求地址
 enum API {
@@ -18,7 +18,7 @@ enum API {
  * *** */
 export const reqLogin = (data: loginFormData) => {
   // 这个泛型第一个是结果第二个是data类型
-  return request({
+  return request<loginFormData, LoginResponse>({
     url: API.LOGIN_URL,
     method: 'post',
     data: data,
