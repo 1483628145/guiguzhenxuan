@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { User, Lock } from '@element-plus/icons-vue'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-import { useUserStore } from '@/stores/modules/user/index';
+import { useUserStore } from '@/stores/modules/user/index'
 
-// 登陆表单
+// 表单数据
 const loginForm = ref({
   username: 'admin',
-  password: '1111112'
+  password: '1111112',
 })
 
 // user仓库
@@ -38,14 +38,24 @@ const loginHandle = async () => {
             <span>欢迎来到尚硅谷</span>
           </el-form-item>
           <el-form-item>
-            <el-input v-model="loginForm.username" placeholder="请输入账户名" :prefix-icon="User">
-            </el-input>
+            <el-input
+              v-model="loginForm.username"
+              placeholder="请输入账户名"
+              :prefix-icon="User"
+            ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input v-model="loginForm.password" show-password placeholder="请输入密码" :prefix-icon="Lock"></el-input>
+            <el-input
+              v-model="loginForm.password"
+              show-password
+              placeholder="请输入密码"
+              :prefix-icon="Lock"
+            ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button class="loginBtn" type="primary" @click="loginHandle">登陆</el-button>
+            <el-button class="loginBtn" type="primary" @click="loginHandle">
+              登陆
+            </el-button>
             <el-button class="loginBtn" type="primary">重置表单</el-button>
           </el-form-item>
         </el-form>
@@ -56,7 +66,7 @@ const loginHandle = async () => {
 
 <style scoped lang="scss">
 .container {
-  background: url("../../assets/images/background.jpg") no-repeat;
+  background: url('../../assets/images/background.jpg') no-repeat;
   width: 100%;
   height: 100vh;
   background-size: cover;
