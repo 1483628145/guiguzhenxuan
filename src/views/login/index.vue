@@ -7,7 +7,7 @@ import { useUserStore } from '@/stores/modules/user/index'
 // 表单数据
 const loginForm = ref({
   username: 'admin',
-  password: '1111112',
+  password: '111111',
 })
 
 // user仓库

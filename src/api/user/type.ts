@@ -10,3 +10,18 @@ export interface LoginResponse {
   message: string
   data: string // token
 }
+
+
+// 用户信息相应结果
+export interface UserInfo {
+  code: number,
+  data: {
+    avatar: string,
+    buttons: string[],
+    name: string,
+    roles: string[],
+    routes: string[]
+  },
+  message: string,
+  ok: boolean
+}

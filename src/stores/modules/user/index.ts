@@ -1,7 +1,7 @@
 // 用户仓库
 import { defineStore } from 'pinia'
 import type { loginFormData } from '@/api/user/type'
-import { reqLogin } from '@/api/user'
+import { reqLogin, reqUserInfo } from '@/api/user'
 import { getToken, setToken } from '@/utils/token'
 import { ElMessage } from 'element-plus'
 
@@ -24,6 +24,7 @@ export const useUserStore = defineStore('counter', {
         this.token = res.data
         // 本地存储token
         setToken(res.data)
+        
         // 登陆成功提示
         ElMessage({
           message: '登陆成功！',

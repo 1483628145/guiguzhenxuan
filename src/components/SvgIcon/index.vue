@@ -16,11 +16,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 const sizePx = computed(() =>
-  typeof props.size === 'number' ? `${props.size}px` : props.size
+  typeof props.size === 'number' ? `${props.size}px` : props.size,
 )
 </script>
 
 <template>
+  <!-- 全局SVG组件 -->
   <svg
     class="svg-icon"
     :style="{ width: sizePx, height: sizePx, color: props.color }"
