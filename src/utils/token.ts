@@ -1,5 +1,4 @@
 // src/utils/token.ts
-
 const TOKEN_KEY = 'TOKEN_KEY'
 
 /**
@@ -7,7 +6,7 @@ const TOKEN_KEY = 'TOKEN_KEY'
  * @param token string
  */
 export function setToken(token: string): void {
-  localStorage.setItem(TOKEN_KEY, token)
+  localStorage.setItem(TOKEN_KEY, JSON.stringify(token))
 }
 
 /**

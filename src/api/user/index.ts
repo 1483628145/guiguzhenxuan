@@ -2,7 +2,7 @@
 
 import request from '@/utils/request'
 
-import type { loginFormData, LoginResponse,UserInfo } from '@/api/user/type'
+import type { loginFormData, LoginResponse, UserInfo } from '@/api/user/type'
 
 //项目用户相关的请求地址
 enum API {
@@ -17,7 +17,7 @@ enum API {
  * 登陆接口
  * *** */
 export const reqLogin = (data: loginFormData) => {
-  // 第一个是请求数据类型第二个是接口响应结果类型 
+  // 第一个是请求数据类型第二个是接口响应结果类型
   return request<loginFormData, LoginResponse>({
     url: API.LOGIN_URL,
     method: 'post',
@@ -29,10 +29,9 @@ export const reqLogin = (data: loginFormData) => {
  * 获取用户信息
  * */
 export const reqUserInfo = () => {
-  // UserInfo 用户信息响应结果 
+  // UserInfo 用户信息响应结果
   return request<UserInfo>({
     url: API.USERINFO_URL,
     method: 'get',
   })
 }
-

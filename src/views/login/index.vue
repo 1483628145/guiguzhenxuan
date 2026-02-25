@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { User, Lock } from '@element-plus/icons-vue'
 import { ref } from 'vue'
-
 import { useUserStore } from '@/stores/modules/user/index'
+import { useRouter } from 'vue-router'
+import { ElNotification } from 'element-plus'
 
 // 表单数据
 const loginForm = ref({
@@ -13,13 +14,41 @@ const loginForm = ref({
 // user仓库
 const userStore = useUserStore()
 
-// 登陆按钮
+// 路由
+let $router = useRouter()
+
+// 登陆按钮是否正在加载
+const loading = ref(false)
+
+// 登陆按钮回调
 const loginHandle = async () => {
-  userStore.loginReq(loginForm.value)
-  // 使用pinia发请求
-  // let res = await reqLogin(loginForm.value)
-  // 成功跳转到首页
-  // console.log(res);
+  // 点击登陆时候出现加载状态
+  loading.value = true
+  try {
+    // 成功后关闭加载状态
+    loading.value = false
+    // 请求成功 此时登陆成功
+    await userStore.loginReq(loginForm.value)
+    // 登陆成功跳转到主页
+    $router.push('/')
+    // 提示成功
+    ElNotification({
+      title: '登陆成功',
+      message: '欢迎回来',
+      type: 'success',
+    })
+  } catch (error) {
+    // 失败也关闭加载状态
+    loading.value = false
+    // 请求失败
+    // 登陆失败提示失败信息
+    ElNotification({
+      title: '登陆失败',
+      // 使用断言将类型配置位Error类型即可
+      message: (error as Error).message,
+      type: 'error',
+    })
+  }
 }
 </script>
 
@@ -27,8 +56,8 @@ const loginHandle = async () => {
   <div class="container">
     <!-- layout布局 -->
     <el-row>
-      <el-col :span="12"></el-col>
-      <el-col :span="12">
+      <el-col :span="12" :xs="0"></el-col>
+      <el-col :span="12" :xs="24">
         <!-- 表单 -->
         <el-form class="loginForm">
           <el-form-item>
@@ -38,6 +67,7 @@ const loginHandle = async () => {
             <span>欢迎来到尚硅谷</span>
           </el-form-item>
           <el-form-item>
+            <!-- 登陆用户名 -->
             <el-input
               v-model="loginForm.username"
               placeholder="请输入账户名"
@@ -45,6 +75,7 @@ const loginHandle = async () => {
             ></el-input>
           </el-form-item>
           <el-form-item>
+            <!-- 登陆密码 -->
             <el-input
               v-model="loginForm.password"
               show-password
@@ -53,10 +84,14 @@ const loginHandle = async () => {
             ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button class="loginBtn" type="primary" @click="loginHandle">
+            <el-button
+              :loading="loading"
+              class="loginBtn"
+              type="primary"
+              @click="loginHandle"
+            >
               登陆
             </el-button>
-            <el-button class="loginBtn" type="primary">重置表单</el-button>
           </el-form-item>
         </el-form>
       </el-col>
@@ -88,7 +123,7 @@ const loginHandle = async () => {
     }
 
     .loginBtn {
-      width: 100px;
+      width: 100%;
     }
   }
 }
