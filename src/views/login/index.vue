@@ -4,6 +4,8 @@ import { ref } from 'vue'
 import { useUserStore } from '@/stores/modules/user/index'
 import { useRouter } from 'vue-router'
 import { ElNotification } from 'element-plus'
+// 获取当前时间
+import { time } from '@/utils/time'
 
 // 表单数据
 const loginForm = ref({
@@ -20,7 +22,7 @@ let $router = useRouter()
 // 登陆按钮是否正在加载
 const loading = ref(false)
 
-// 登陆按钮回调
+// 登陆按钮
 const loginHandle = async () => {
   // 点击登陆时候出现加载状态
   loading.value = true
@@ -34,7 +36,7 @@ const loginHandle = async () => {
     // 提示成功
     ElNotification({
       title: '登陆成功',
-      message: '欢迎回来',
+      message: `欢迎回来, ${time()}`,
       type: 'success',
     })
   } catch (error) {
