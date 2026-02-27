@@ -4,22 +4,7 @@
     <div class="layout-slider">
       <logo></logo>
       <el-scrollbar class="scrollbar">
-        <!-- 左侧菜单- 静态 -->
-        <el-menu
-          class="el-menu-vertical-demo"
-          background-color="$base-menu-background"
-          text-color="#fff"
-        >
-          <el-menu-item index="1">首页</el-menu-item>
-          <el-menu-item index="2">数据大屏</el-menu-item>
-          <el-sub-menu index="3">
-            <template #title>权限管理</template>
-            <el-menu-item index="3-1">用户管理</el-menu-item>
-            <el-menu-item index="3-2">角色管理</el-menu-item>
-            <el-menu-item index="3-3">菜单管理</el-menu-item>
-          </el-sub-menu>
-          <el-menu-item index="4">商品管理</el-menu-item>
-        </el-menu>
+        <scrollbarMenu></scrollbarMenu>
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
@@ -31,6 +16,7 @@
 
 <script setup lang="ts">
 import logo from './components/logo.vue'
+import scrollbarMenu from './components/scrollbarMenu.vue'
 </script>
 
 <style scoped lang="scss">

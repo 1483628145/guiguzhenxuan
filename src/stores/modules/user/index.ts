@@ -3,13 +3,17 @@ import { defineStore } from 'pinia'
 import type { loginFormData } from '@/api/user/type'
 import { reqLogin, reqUserInfo } from '@/api/user'
 import { getToken, setToken } from '@/utils/token'
-import type { userToken } from '@/stores/modules/user/types/type'
+import type { userState } from '@/stores/modules/user/types/type'
 
+import { constantRoute } from '@/router/routers'
 export const useUserStore = defineStore('counter', {
   //  状态（必须是函数）
-  state: (): userToken => {
+  state: (): userState => {
     return {
+      // 用户token
       token: getToken() || null,
+      // 路由表
+      menuRouters: constantRoute,
     }
   },
 
